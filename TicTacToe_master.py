@@ -18,45 +18,57 @@ def print_board(board):
 
 #Define the player X moves
 def player1_move():
+    error = 1
+    while error == 1:
         try:
             player1_move = int(input(" Please take your move, select an empty space for X : "))
             if player1_move==board[0]:
                 print("\nSorry, that\'s not a valid move. Try again! ")
                 time.sleep(1)
-                player1_move()
-            if board[player1_move] == "-":          #Check the move is available or not
+                error = 1
+            elif board[player1_move] == "-":        #Check the move is available or not
                 board[player1_move] = "X"
+                error = 0
             else:
                 print("\nSorry, that\'s not a valid move. Try again! ")
                 time.sleep(1)
-            os.system('clear')
-            print_board(board)
+                error = 1
         except ValueError:                          #Ask for take a move again if the input is not a number
             print("\nSorry, that\'s not a valid move. Try again! ")
             time.sleep(1)
-            
-
+        except IndexError:
+            print("\nSorry, that\'s not a valid move. Try again! ")
+            time.sleep(1)
+        os.system('clear')
+        print_board(board)
+    
+        
 #Define the player O moves
-def player2_move():
+def player2_move():   
+    error = 1
+    while error == 1:
         try:
             player2_move = int(input(" Please take your move, select an empty space for O : "))
             if player2_move==board[0]:
                 print("\nSorry, that\'s not a valid move. Try again! ")
                 time.sleep(1)
                 player2_move()
-            if board[player2_move] == "-":          #Check the move is available or not
+                error = 1
+            elif board[player2_move] == "-":    #Check the move is available or not
                 board[player2_move] = "O"
+                error = 0
             else:
                 print("\nSorry, that\'s not a valid move. Try again! ")
                 time.sleep(1)
-            os.system('clear')
-            print_board(board)
-        except ValueError:                          #Ask for take a move again if the input is not a number
+                error = 1
+        except ValueError:                      #Ask for take a move again if the input is not a number
             print("\nThat's not a number. Try again")
             time.sleep(1)
         except IndexError:
             print("\nSorry, that\'s not a valid move. Try again! ")
             time.sleep(1)
+        os.system('clear')
+        print_board(board)
 
     
 #Select which player starts
@@ -115,6 +127,8 @@ def endofgame():
             board[9]='-'
             os.system('clear')
             print_board(board)
+            print("Random selecting player...")
+            time.sleep(2)
             main()
     elif newgame == "N" or newgame == "n":
             print("What\'s wrong? CHICKEN??")
@@ -171,9 +185,9 @@ def main():
     turn = 0
     while turn < 9:
         if rp == 0:
-            turn += 1
             rp+=1
             player1_move()
+            turn += 1
             if check_win('X') == True:      #Check for X win
                 os.system('clear')
                 print_board(board)
@@ -181,8 +195,8 @@ def main():
                 endofgame()
         else:
             rp -= 1
-            turn +=1
             player2_move()
+            turn +=1
             if check_win('O') == True:      #Check for O win
                 os.system('clear')
                 print_board(board)
