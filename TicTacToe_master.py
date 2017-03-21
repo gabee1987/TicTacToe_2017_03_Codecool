@@ -21,17 +21,17 @@ def print_board(board):
 
 
 # Define the player X moves
-def player1_move():
+def player_x_move():
     error = 1
     while error == 1:
         try:
-            player1_move = int(input("Please take your move, select an empty space for X : "))
-            if player1_move == board[0]:
+            player_x_move = int(input("Please take your move, select an empty space for X : "))
+            if player_x_move == board[0]:
                 print("\nSorry, that\'s not a valid move. Try again! ")
                 time.sleep(1)
                 error = 1
-            elif board[player1_move] == "-":        # Check the move is available or not
-                board[player1_move] = "X"
+            elif board[player_x_move] == "-":        # Check the move is available or not
+                board[player_x_move] = "X"
                 error = 0
             else:
                 print("\nSorry, that\'s not a valid move. Try again! ")
@@ -48,18 +48,18 @@ def player1_move():
 
 
 # Define the player O moves
-def player2_move():
+def player_o_move():
     error = 1
     while error == 1:
         try:
-            player2_move = int(input("Please take your move, select an empty space for O : "))
-            if player2_move == board[0]:
+            player_o_move = int(input("Please take your move, select an empty space for O : "))
+            if player_o_move == board[0]:
                 print("\nSorry, that\'s not a valid move. Try again! ")
                 time.sleep(1)
-                player2_move()
+                player_o_move()
                 error = 1
-            elif board[player2_move] == "-":    # Check the move is available or not
-                board[player2_move] = "O"
+            elif board[player_o_move] == "-":    # Check the move is available or not
+                board[player_o_move] = "O"
                 error = 0
             else:
                 print("\nSorry, that\'s not a valid move. Try again! ")
@@ -73,6 +73,14 @@ def player2_move():
             time.sleep(1)
         os.system('clear')
         print_board(board)
+
+
+def computer():
+    pass
+
+
+def pvp_or_pvc():
+    pass
 
 
 # Randomly select which player starts
@@ -167,7 +175,7 @@ def main():
     while turn < 9:
         if rp == 0:
             rp += 1
-            player1_move()
+            player_x_move()
             turn += 1
             if check_win('X') is True:      # Check for X win
                 os.system('clear')
@@ -178,7 +186,7 @@ def main():
                 endofgame()
         else:
             rp -= 1
-            player2_move()
+            player_o_move()
             turn += 1
             if check_win('O') is True:      # Check for O win
                 os.system('clear')
