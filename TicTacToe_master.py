@@ -5,15 +5,19 @@ import random
 
 # Define the board items as a list
 board = [0] + ['-' for x in range(9)]
+score_x = 0
+score_o = 0
+score_tie = 0
 
 
 # Print the board
 def print_board(board):
+    print('Score: \nPlayer X:', score_x, '| Player O:', score_o, '| Tie:', score_tie, '\n')
     print(' ', board[7], '|', board[8], '|', board[9])
     print(" ---+---+---")
     print(' ', board[4], '|', board[5], '|', board[6])
     print(" ---+---+---")
-    print(' ', board[1], '|', board[2], '|', board[3])
+    print(' ', board[1], '|', board[2], '|', board[3], '\n')
 
 
 # Define the player X moves
@@ -21,7 +25,7 @@ def player1_move():
     error = 1
     while error == 1:
         try:
-            player1_move = int(input(" Please take your move, select an empty space for X : "))
+            player1_move = int(input("Please take your move, select an empty space for X : "))
             if player1_move == board[0]:
                 print("\nSorry, that\'s not a valid move. Try again! ")
                 time.sleep(1)
@@ -48,7 +52,7 @@ def player2_move():
     error = 1
     while error == 1:
         try:
-            player2_move = int(input(" Please take your move, select an empty space for O : "))
+            player2_move = int(input("Please take your move, select an empty space for O : "))
             if player2_move == board[0]:
                 print("\nSorry, that\'s not a valid move. Try again! ")
                 time.sleep(1)
@@ -100,7 +104,7 @@ def check_win(X):
 def endofgame():
     newgame = input("Would you like to challange somebody again? Y or N? : ")
     if newgame == "Y" or newgame == "y":
-            for i in board:
+            for i in range(len(board)):
                 board[i] = '-'
             os.system('clear')
             print_board(board)
@@ -169,6 +173,8 @@ def main():
                 os.system('clear')
                 print_board(board)
                 print("Congratulations! Player X won!")
+                global score_x
+                score_x += 1
                 endofgame()
         else:
             rp -= 1
@@ -178,9 +184,13 @@ def main():
                 os.system('clear')
                 print_board(board)
                 print("Congratulations! Player O won!")
+                global score_o
+                score_o += 1
                 endofgame()
     else:
         print("The game is a TIE.")
+        global score_tie
+        score_tie += 1
         endofgame()
 
 print_header()
