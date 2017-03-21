@@ -4,7 +4,7 @@ import os
 import random
 
 # Define the board items as a list
-board = [None] + ['-' for x in range(9)]
+board = [0] + ['-' for x in range(9)]
 
 
 # Print the board
@@ -76,14 +76,12 @@ def player_select(rp):
     rp = random.randint(0, 1)
     if rp == 0:
         print('Player X will start the game')
-        return rp
     else:
         print('Player O will start the game')
-        return rp
+    return rp
 
 
-# Check winner rules
-# Check winner X
+# Check winner
 def check_win(X):
     if (board[7] == X and board[8] == X and board[9] == X) or \
         (board[4] == X and board[5] == X and board[6] == X) or \
@@ -98,35 +96,12 @@ def check_win(X):
         False
 
 
-# Check winner O
-def check_win(O):
-    if (board[7] == O and board[8] == O and board[9] == O) or \
-        (board[4] == O and board[5] == O and board[6] == O) or \
-        (board[1] == O and board[2] == O and board[3] == O) or \
-        (board[7] == O and board[4] == O and board[1] == O) or \
-        (board[8] == O and board[5] == O and board[2] == O) or \
-        (board[9] == O and board[6] == O and board[3] == O) or \
-        (board[7] == O and board[5] == O and board[3] == O) or \
-        (board[9] == O and board[5] == O and board[1] == O):
-        return True
-    else:
-        False
-
-
 # Ask the player for a new game
 def endofgame():
     newgame = input("Would you like to challange somebody again? Y or N? : ")
     if newgame == "Y" or newgame == "y":
-            board[0] = '-'
-            board[1] = '-'
-            board[2] = '-'
-            board[3] = '-'
-            board[4] = '-'
-            board[5] = '-'
-            board[6] = '-'
-            board[7] = '-'
-            board[8] = '-'
-            board[9] = '-'
+            for i in board:
+                board[i] = '-'
             os.system('clear')
             print_board(board)
             print("Random selecting player...")
