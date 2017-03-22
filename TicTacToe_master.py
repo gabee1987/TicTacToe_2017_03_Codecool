@@ -80,7 +80,17 @@ def computer():
 
 
 def pvp_or_pvc():
-    pass
+    select = input('Please select game mode:')
+    error = 1
+    while error == 1:
+        if select == 'p':
+            error = 0
+            return True
+        elif select == 'c':
+            error = 0
+            return False
+        else:
+            error = 1
 
 
 # Randomly select which player starts
@@ -157,13 +167,13 @@ def print_header():
 
                             Prepare yourself! The ultimate battle is about to begin.
 
-                            **Press Enter to randomly select the Starting Player!**
+                            To play against friend write: p
+                            To play against computer write: c
     """
     print(header)
-    input()
 
 
-def main():
+def pvp():
     os.system('clear')
     print_board(board)
     rp = random.randint(0, 1)                # Select which player starts
@@ -201,5 +211,17 @@ def main():
         score_tie += 1
         endofgame()
 
+
+def pvc():
+    pass
+
+
+def main():
+    if pvp_or_pvc() is True:
+        pvp()
+    if pvp_or_pvc() is False:
+        pvc()
+
 print_header()
+pvp_or_pvc()
 main()
