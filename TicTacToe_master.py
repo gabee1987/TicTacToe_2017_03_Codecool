@@ -12,9 +12,9 @@ score_tie = 0
 
 
 def print_score():
-    if pvp_or_pvc() is True:
+    if select == 'p':
         print('Score: \nPlayer X:', score_x, '| Player O:', score_o, '| Tie:', score_tie, '\n')
-    elif pvp_or_pvc() is False:
+    elif select == 'c':
         print('Score: \nPlayer:', score_x, '| Computer:', score_c, '| Tie:', score_tie, '\n')
 
 
@@ -85,28 +85,26 @@ def player_o_move():
 
 def computer():
     move = 0
+    print('Thinking...')
+    time.sleep(1)
     while move == 0:
         f = random.randint(1, 9)
         if board[f] == '-':
             board[f] = 'O'
             move = 1
-    # for f in range(len(board)):
-        # if board[f] == '-':
-            # free_spc = free_space.append(board[f])
-    # if free_spc != []:
-        # random.choice(free_spc) = 'O'
+        os.system('clear')
+        print_board(board)
 
 
 def pvp_or_pvc():
     error = 0
-    select = input('Please select game mode:')
     while error == 0:
         if select == 'p':
             error = 1
-            return 'p'
+            pvp()
         elif select == 'c':
             error = 1
-            return 'c'
+            pvc()
         else:
             error = 0
 
@@ -146,7 +144,7 @@ def endofgame():
             print_board(board)
             print("Random selecting player...")
             time.sleep(2)
-            main()
+            pvp_or_pvc()
     elif newgame == "N" or newgame == "n":
             print("What\'s wrong? CHICKEN??")
             time.sleep(2)
@@ -270,19 +268,10 @@ def pvc():
 
 
 def main():
-    error = 0
+    global select
     select = input('Please select game mode:')
-    while error == 0:
-        if select == 'p':
-            error = 1
-            pvp()
-        elif select == 'c':
-            error = 1
-            pvc()
-        else:
-            error = 0
+    pvp_or_pvc()
 
 
 print_header()
-pvp_or_pvc()
 main()
