@@ -90,7 +90,7 @@ def check_win(X):
         (board[8] == X and board[5] == X and board[2] == X) or \
         (board[9] == X and board[6] == X and board[3] == X) or \
         (board[7] == X and board[5] == X and board[3] == X) or \
-        (board[9] == X and board[5] == X and board[1] == X):
+       (board[9] == X and board[5] == X and board[1] == X):
         return True
     else:
         False
