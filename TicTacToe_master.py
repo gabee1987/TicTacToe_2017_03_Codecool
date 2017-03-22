@@ -7,12 +7,20 @@ import random
 board = [0] + ['-' for x in range(9)]
 score_x = 0
 score_o = 0
+score_c = 0
 score_tie = 0
+
+
+def print_score():
+    if pvp_or_pvc() is True:
+        print('Score: \nPlayer X:', score_x, '| Player O:', score_o, '| Tie:', score_tie, '\n')
+    elif pvp_or_pvc() is False:
+        print('Score: \nPlayer:', score_x, '| Computer:', score_c, '| Tie:', score_tie, '\n')
 
 
 # Print the board
 def print_board(board):
-    print('Score: \nPlayer X:', score_x, '| Player O:', score_o, '| Tie:', score_tie, '\n')
+    print_score()
     print(' ', board[7], '|', board[8], '|', board[9])
     print(" ---+---+---")
     print(' ', board[4], '|', board[5], '|', board[6])
@@ -76,21 +84,31 @@ def player_o_move():
 
 
 def computer():
-    pass
+    move = 0
+    while move == 0:
+        f = random.randint(1, 9)
+        if board[f] == '-':
+            board[f] = 'O'
+            move = 1
+    # for f in range(len(board)):
+        # if board[f] == '-':
+            # free_spc = free_space.append(board[f])
+    # if free_spc != []:
+        # random.choice(free_spc) = 'O'
 
 
 def pvp_or_pvc():
+    error = 0
     select = input('Please select game mode:')
-    error = 1
-    while error == 1:
+    while error == 0:
         if select == 'p':
-            error = 0
-            return True
-        elif select == 'c':
-            error = 0
-            return False
-        else:
             error = 1
+            return 'p'
+        elif select == 'c':
+            error = 1
+            return 'c'
+        else:
+            error = 0
 
 
 # Randomly select which player starts
@@ -213,14 +231,57 @@ def pvp():
 
 
 def pvc():
-    pass
+    os.system('clear')
+    print_board(board)
+    rp = random.randint(0, 1)                # Select which player starts
+    if rp == 0:
+        print('You will start the game')
+    else:
+        print('Computer will start the game')
+    turn = 0
+    while turn < 9:
+        if rp == 0:
+            rp += 1
+            player_x_move()
+            turn += 1
+            if check_win('X') is True:      # Check for X win
+                os.system('clear')
+                print_board(board)
+                print("Congratulations! Player X won!")
+                global score_x
+                score_x += 1
+                endofgame()
+        else:
+            rp -= 1
+            computer()
+            turn += 1
+            if check_win('O') is True:      # Check for O win
+                os.system('clear')
+                print_board(board)
+                print("Sorry dude, the computer won.")
+                global score_c
+                score_c += 1
+                endofgame()
+    else:
+        print("The game is a TIE.")
+        global score_tie
+        score_tie += 1
+        endofgame()
 
 
 def main():
-    if pvp_or_pvc() is True:
-        pvp()
-    if pvp_or_pvc() is False:
-        pvc()
+    error = 0
+    select = input('Please select game mode:')
+    while error == 0:
+        if select == 'p':
+            error = 1
+            pvp()
+        elif select == 'c':
+            error = 1
+            pvc()
+        else:
+            error = 0
+
 
 print_header()
 pvp_or_pvc()
