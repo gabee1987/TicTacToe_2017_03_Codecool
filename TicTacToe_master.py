@@ -92,13 +92,13 @@ def computer():
         print (dots, end="\r")
         time.sleep(0.6)
     time.sleep(0.4)
-    while move == 0:4
-        f = random.randint(1, 9)
-        if board[f] == '-':
-            board[f] = 'O'
-            move = 1
-        os.system('clear')
-        print_board(board)
+    while move == 0: 4
+    f = random.randint(1, 9)
+    if board[f] == '-':
+        board[f] = 'O'
+        move = 1
+    os.system('clear')
+    print_board(board)
 
 
 def hc_computer():
