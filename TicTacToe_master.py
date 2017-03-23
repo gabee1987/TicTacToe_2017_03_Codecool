@@ -259,7 +259,7 @@ def boardwincheck_x(f, g, j):
         return f
 
 
-def pvp_or_pvc():
+def pvp_or_pvc_or_pvhc():
     error = 0
     while error == 0:
         if select == 'p':
@@ -302,7 +302,7 @@ def check_win(X):
 
 # Ask the player for a new game
 def endofgame():
-    newgame = input("Would you like to challange somebody again? Y or N? : ")
+    newgame = input("Do you want to play again? Y or N? : ")
     if newgame == "Y" or newgame == "y":
             for i in range(len(board)):
                 board[i] = '-'
@@ -310,7 +310,7 @@ def endofgame():
             print_board(board)
             print("Random selecting player...")
             time.sleep(2)
-            pvp_or_pvc()
+            pvp_or_pvc_or_pvhc()
     elif newgame == "N" or newgame == "n":
             print("What\'s wrong? CHICKEN??")
             time.sleep(2)
@@ -477,7 +477,7 @@ def pvhc():
 def main():
     global select
     select = input('Please select game mode:')
-    pvp_or_pvc()
+    pvp_or_pvc_or_pvhc()
 
 
 print_header()
