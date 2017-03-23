@@ -1,8 +1,8 @@
 # Import main modules
-# Import main modules
 import time
 import os
 import random
+import sys
 
 # Define the board items as a list
 board = [0] + ['-' for x in range(9)]
@@ -86,9 +86,13 @@ def player_o_move():
 
 def computer():
     move = 0
-    print('Thinking...')
-    time.sleep(2)
-    while move == 0:
+    dots = "..."
+    for x in range(0, 4):
+        dots = " Thinking" + "." * x
+        print (dots, end="\r")
+        time.sleep(0.6)
+    time.sleep(0.4)
+    while move == 0:4
         f = random.randint(1, 9)
         if board[f] == '-':
             board[f] = 'O'
@@ -98,8 +102,12 @@ def computer():
 
 
 def hc_computer():
-    print('Thinking...')
-    time.sleep(2)
+    dots = "..."
+    for x in range(0, 4):
+        dots = " Thinking" + "." * x
+        print (dots, end="\r")
+        time.sleep(0.6)
+    time.sleep(0.4)
     if board[5] == '-':
         board[5] = 'O'
         os.system('clear')
