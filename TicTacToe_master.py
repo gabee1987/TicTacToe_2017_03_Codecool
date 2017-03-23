@@ -107,119 +107,148 @@ def hc_computer():
         return
     # Do I win this turn?
     r = boardwincheck_o(7, 8, 9)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_o(4, 5, 6)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_o(1, 2, 3)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_o(7, 4, 1)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_o(8, 5, 2)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_o(9, 6, 3)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_o(7, 5, 3)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_o(9, 5, 1)
-    if board[r] == '-':
-        board[r] = 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     # Does player win next turn?
     r = boardwincheck_x(7, 8, 9)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_x(4, 5, 6)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_x(1, 2, 3)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_x(7, 4, 1)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_x(8, 5, 2)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_x(9, 6, 3)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_x(7, 5, 3)
-    if board[r] == '-':
-        board[r] == 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     r = boardwincheck_x(9, 5, 1)
-    if board[r] == '-':
-        board[r] = 'O'
-        os.system('clear')
-        print_board(board)
-        return
+    if r is not None:
+        if board[r] == '-':
+            board[r] = 'O'
+            os.system('clear')
+            print_board(board)
+            return
     # Is 1 3 7 9 free?
     error = 1
     while error == 1:
-        s = random.randint(1, 3, 7, 9)
+        corners = [1, 3, 7, 9]
+        s = random.choice(corners)
         if board[s] == '-':
             board[s] = 'O'
+            os.system('clear')
+            print_board(board)
+            error = 0
+            return
+    error2 = 1
+    while error2 == 1:
+        notcorners = [2, 4, 6, 8]
+        s = random.choice(notcorners)
+        if board[s] == '-':
+            board[s] = 'O'
+            os.system('clear')
+            print_board(board)
             error = 0
             return
 
 
 def boardwincheck_o(f, g, j):
     if board[f] == board[g] == 'O':
-        return int(j)
+        return j
     if board[f] == board[j] == 'O':
-        return int(g)
+        return g
     if board[g] == board[j] == 'O':
-        return int(f)
+        return f
 
 
 def boardwincheck_x(f, g, j):
@@ -314,8 +343,15 @@ def print_header():
                                                     ---+---+---
                                                      1 | 2 | 3
                             Prepare yourself! The ultimate battle is about to begin.
+<<<<<<< HEAD
                             To play against friend write: p
                             To play against computer write: c
+=======
+
+                            To play against friend, write: p
+                            To play against easy computer, write: c
+                            To play against hard computer, write: hc
+>>>>>>> 38dc3ef945bbdeb35946f8ead283e2e4938c3f03
     """
     print(header)
 
