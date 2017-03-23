@@ -89,7 +89,7 @@ def computer():
     for x in range(0, 4):
         dots = " Thinking" + "." * x
         print (dots, end="\r")
-        time.sleep(0.5)
+        time.sleep(0.1)
     time.sleep(0.1)
     while move == 0: 
         f = random.randint(1, 9)
@@ -315,7 +315,7 @@ def endofgame():
             for x in range(0, 4):
                 dots = " Random selecting player" + "." * x
                 print (dots, end="\r")
-                time.sleep(0.3)
+                time.sleep(0.2)
             pvp_or_pvc_or_pvhc()
     elif newgame == "N" or newgame == "n":
             print("What\'s wrong? CHICKEN??")
