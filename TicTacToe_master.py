@@ -343,15 +343,12 @@ def print_header():
                                                     ---+---+---
                                                      1 | 2 | 3
                             Prepare yourself! The ultimate battle is about to begin.
-<<<<<<< HEAD
                             To play against friend write: p
                             To play against computer write: c
-=======
 
                             To play against friend, write: p
                             To play against easy computer, write: c
                             To play against hard computer, write: hc
->>>>>>> 38dc3ef945bbdeb35946f8ead283e2e4938c3f03
     """
     print(header)
 
