@@ -86,28 +86,26 @@ def player_o_move():
 
 def computer():
     move = 0
-    dots = "..."
     for x in range(0, 4):
         dots = " Thinking" + "." * x
         print (dots, end="\r")
-        time.sleep(0.6)
-    time.sleep(0.4)
-    while move == 0: 4
-    f = random.randint(1, 9)
-    if board[f] == '-':
-        board[f] = 'O'
-        move = 1
-    os.system('clear')
-    print_board(board)
+        time.sleep(0.5)
+    time.sleep(0.1)
+    while move == 0: 
+        f = random.randint(1, 9)
+        if board[f] == '-':
+            board[f] = 'O'
+            move = 1
+        os.system('clear')
+        print_board(board)
 
 
 def hc_computer():
-    dots = "..."
     for x in range(0, 4):
         dots = " Thinking" + "." * x
         print (dots, end="\r")
-        time.sleep(0.6)
-    time.sleep(0.4)
+        time.sleep(0.5)
+    time.sleep(0.1)
     if board[5] == '-':
         board[5] = 'O'
         os.system('clear')
@@ -314,8 +312,10 @@ def endofgame():
                 board[i] = '-'
             os.system('clear')
             print_board(board)
-            print("Random selecting player...")
-            time.sleep(2)
+            for x in range(0, 4):
+                dots = " Random selecting player" + "." * x
+                print (dots, end="\r")
+                time.sleep(0.3)
             pvp_or_pvc_or_pvhc()
     elif newgame == "N" or newgame == "n":
             print("What\'s wrong? CHICKEN??")
