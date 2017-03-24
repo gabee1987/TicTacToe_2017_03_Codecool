@@ -348,8 +348,6 @@ def print_header():
                                                     ---+---+---
                                                      1 | 2 | 3
                             Prepare yourself! The ultimate battle is about to begin.
-                            To play against friend write: p
-                            To play against computer write: c
 
                             To play against friend, write: p
                             To play against easy computer, write: c
