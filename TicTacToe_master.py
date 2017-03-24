@@ -226,7 +226,7 @@ def hc_computer():
             print_board(board)
             return
     # Is 1 3 7 9 free?
-    for _ in range(4):
+    for _ in range(5):
         corners = [1, 3, 7, 9]
         s = random.choice(corners)
         if board[s] == '-':
@@ -235,7 +235,7 @@ def hc_computer():
             print_board(board)
             return
     # Is 2 4 6 8 free?
-    for _ in range(4):
+    for _ in range(5):
         notcorners = [2, 4, 6, 8]
         s = random.choice(notcorners)
         if board[s] == '-':
